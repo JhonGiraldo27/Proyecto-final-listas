@@ -1,0 +1,8 @@
+Nombre: sa
+Apellido: e
+Cedula: 1000645685
+Telefono: 312
+Modalidad: Virtual
+Cantidad de asignaturas: 3
+Serial : null
+---------------------------------------
