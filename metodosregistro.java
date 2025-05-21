@@ -44,6 +44,7 @@ public class metodosregistro {
                     }
                 }
             }
+            o.setSerial(null);
 
             o.setNombre(v.validarSoloLetras("Ingrese su Nombre: "));
 
@@ -70,7 +71,7 @@ public class metodosregistro {
                         "porfavor Ingrese un numero entero");
                 if (cantAsignaturas > 10) {
                     System.out
-                            .println("Error: Estás ingresando mas asignaturas de las permitidas, intenta nuevamente ");
+                            .println("Error: No puede cursar más de 10 asignaturas en un semestre.");
 
                 }
 
@@ -110,6 +111,8 @@ public class metodosregistro {
                     }
                 }
             }
+
+            o.setSerial(null);
 
             o.setNombre(v.validarSoloLetras("Ingrese su Nombre: "));
 

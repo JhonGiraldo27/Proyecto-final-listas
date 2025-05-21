@@ -51,4 +51,13 @@ public class ObjComp_portatil {
         Procesador = procesador;
     }
     
+    public String toString(){
+           return "Serial: " + Serial + "\n" +
+           "Marca: " + Marca + "\n" +
+           "Tamaño: " + Tamaño + " pulgadas\n" +
+           "Precio: $" + Precio + "\n" +
+           "Sistema Operativo: " + Sistem_op + "\n" +
+           "Procesador: " + Procesador + "\n" +
+           "Disponible: " + (Disponible ? "Sí" : "No");
+    }
 }
