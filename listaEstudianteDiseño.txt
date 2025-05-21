@@ -1,8 +1,8 @@
-Nombre: sa
-Apellido: e
+Nombre: Jhon Eyder
+Apellido: Giraldo Hoyos
 Cedula: 1000645685
-Telefono: 312
-Modalidad: Virtual
-Cantidad de asignaturas: 3
-Serial : null
+Telefono: 3128585324
+Modalidad: Presencial
+Cantidad de asignaturas: 10
+Serial : UEW56F
 ---------------------------------------

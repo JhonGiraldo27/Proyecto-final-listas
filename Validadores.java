@@ -42,10 +42,10 @@ public class Validadores {
     }
 
     public String validarSoloLetras(String mensaje) {
-        return validarConRegex(mensaje, "^[a-zA-Z\\s]+$", "Ingrese solo caracteres alfabeticos");
+        return validarConRegex(mensaje, "^[a-zA-Z\\s]+$", "Error! Ingrese solo caracteres alfabeticos");
     }
 
     public String validarNoCaracteresEspeciales(String mensaje) {
-        return validarConRegex(mensaje, "^[a-zA-Z0-9]+$", "No ingrese caracteres especiales\nntente nuevamente: ");
+        return validarConRegex(mensaje, "^[a-zA-Z0-9]+$", "Error! No ingrese caracteres especiales\ntente nuevamente: ");
     }
 }

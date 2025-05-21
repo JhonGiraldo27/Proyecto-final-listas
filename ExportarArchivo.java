@@ -68,7 +68,7 @@ public class ExportarArchivo {
                     escriba.write("Apellido: " + item.getApellido() + "\n");
                     escriba.write("Cedula: " + item.getCedula() + "\n");
                     escriba.write("Telefono: " + item.getTelefono() + "\n");
-                    escriba.write("Semeste Cursado: " + item.getSemestre_cursado() + "\n");
+                    escriba.write("Semestre Cursado: " + item.getSemestre_cursado() + "\n");
                     escriba.write("Prom Acumulado: " + item.getProm_acum() + "\n");
                     escriba.write("Serial: " + item.getSerial() + "\n");
                     escriba.write("---------------------------------------\n");

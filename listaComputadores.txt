@@ -1,0 +1,8 @@
+Marca: DEll
+Precio: 250.0
+Procesador: AMD Ryzen.
+Serial: ADM2312
+Sistema Operativo: 1. Windows 10.
+Tamaño: 16.0
+Disponible : true
+---------------------------------------

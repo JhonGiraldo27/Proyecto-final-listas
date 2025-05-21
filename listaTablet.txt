@@ -1,0 +1,8 @@
+Marca: Dell
+Precio: 124.0
+Peso: 21.0
+Serial: UEW56F
+Tamaño: 23.0
+Almacenamiento: 512 GB
+Disponible : false
+---------------------------------------

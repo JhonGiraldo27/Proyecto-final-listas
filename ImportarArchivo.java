@@ -21,7 +21,7 @@ public class ImportarArchivo{
                 estudiante.setNombre(linea.substring(8));
             } else if (linea.startsWith("Apellido: ")) {
                 if (estudiante != null) {
-                    estudiante.setApellido(linea.substring(9));
+                    estudiante.setApellido(linea.substring(10));
                 }
             } else if (linea.startsWith("Cedula: ")) {
                 if (estudiante != null) {
@@ -69,7 +69,7 @@ public LinkedList<objEst_ing> importarArchivoEstIng() {
                 estudiante.setNombre(linea.substring(8));
             } else if (linea.startsWith("Apellido: ")) {
                 if (estudiante != null) {
-                    estudiante.setApellido(linea.substring(9));
+                    estudiante.setApellido(linea.substring(10));
                 }
             } else if (linea.startsWith("Cedula: ")) {
                 if (estudiante != null) {
@@ -79,7 +79,7 @@ public LinkedList<objEst_ing> importarArchivoEstIng() {
                 if (estudiante != null) {
                     estudiante.setTelefono(linea.substring(10));
                 }
-            } else if (linea.startsWith("Semeste Cursado: ")) {
+            } else if (linea.startsWith("Semestre Cursado: ")) {
                 if (estudiante != null) {
                     estudiante.setSemestre_cursado(Integer.parseInt(linea.substring(18)));
                 }
@@ -89,7 +89,7 @@ public LinkedList<objEst_ing> importarArchivoEstIng() {
                 }
             } else if (linea.startsWith("Serial: ")) {
                 if (estudiante != null) {
-                    estudiante.setSerial(linea.substring(7));
+                    estudiante.setSerial(linea.substring(8));
                     listaIngenieria.add(estudiante);
                 }
             }
@@ -135,7 +135,7 @@ public LinkedList<ObjComp_portatil> importarArchivoComputadores() {
             }
         }
 
-        // Por si no termina con la línea separadora
+     
         if (comp != null) {
             listaComputadores.add(comp);
         }
@@ -180,7 +180,6 @@ public LinkedList<ObjTableta_grafica> importarArchivoTablets() {
             }
         }
 
-        // Por si no termina con la línea separadora
         if (tablet != null) {
             listaTablets.add(tablet);
         }
