@@ -53,7 +53,7 @@ public class Menu {
                     MetodosMostrarListas.mostrarTablets(Tabl_graf);
                     break;
                 case 4:
-                    menuRegistrar(sc, computadores, Est_dis, Est_ing, Tabl_graf, v, m, mEditar);
+                    menuRegistrar(sc, computadores, Est_dis, Est_ing, Tabl_graf, v, m, mEditar); //aqui tambien
 
                 default:
                     System.out
@@ -81,6 +81,7 @@ public class Menu {
             int c = Integer.parseInt(optmenuing);
 
             switch (c) {
+                //falta hacer el paso siguiente
                 case 1:
                     // mPrst.();
                     break;
@@ -170,7 +171,7 @@ public class Menu {
                     int opcionEditar = Integer.parseInt(entrada);
                     switch (opcionEditar) {
                         case 1:
-                            mEditar.editarEstudianteDis(Est_dis);
+                            mEditar.editarEstudianteDis(Est_dis); //aqui parte una excepcion
 
                             break;
                         case 2:
@@ -222,6 +223,7 @@ public class Menu {
                 case 1:
                     mPrst.prestarTabletADiseno(Tablets, Est_dis, v, exp);;
                     break;
+                // falta aqui lo que tiene que hacer
                 case 2:
                     // mPrst.();
                     break;

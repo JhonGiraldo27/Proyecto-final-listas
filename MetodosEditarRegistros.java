@@ -152,7 +152,7 @@ public class MetodosEditarRegistros {
             System.out.println("No hay estudiantes registrados para editar.");
             return Est_dis;
         }
-
+        //las cedulas son de tipo numerico
         String cedulaBuscar = v.validarSoloNumeros("Ingrese la cédula del estudiante que desea editar: ");
         boolean encontrado = false;
 

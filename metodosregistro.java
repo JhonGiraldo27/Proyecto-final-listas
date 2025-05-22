@@ -9,7 +9,7 @@ public class metodosregistro {
     private boolean nuevoregistro(String tipoRegistro) {
 
         String entradatemp = v.validarConRegex(
-                "¿Desea ingresar otro " + tipoRegistro + " ? \n1. Sí \n2. Volver al menú.\nOpcion: ",
+                "¿Desea ingresar otro " + tipoRegistro + " \n1. Sí \n2. Volver al menú.\nOpcion: ",
                 "^[1-2]+$",
                 "Error Ingrese un numero valido (1,2)");
 
@@ -53,7 +53,7 @@ public class metodosregistro {
             o.setTelefono(v.validarSoloNumeros("ingrese Su numero de Telefono: "));
 
             String entrada = v.validarConRegex("¿Cuál es su modalidad de estudio?: \n1. Presencial\n2. Virtual: ",
-                    "^[1-2]+$", "☣️ERROR! Porfavor ingrese una opcion valida");
+                    "^[1-2]+$", "☣  ️ERROR! Porfavor ingrese una opcion valida");
             int modalidad = Integer.parseInt(entrada);
 
             if (modalidad == 1) {
@@ -199,9 +199,9 @@ public class metodosregistro {
             Computador.add(o);
             exp.exportarArchivoComp(Computador);
 
-            System.out.println(
-                    "Computador: " + o.getMarca() + " Con el serial: " + o.getSerial() + "Agregado Correctamente");
-            System.out.println("¿Desea ingresar otro Estudiante ? \n1. Sí \n2. Volver al menú.");
+            System.out.println("Computador: " + o.getMarca() + " Con el serial: " + o.getSerial() + "\n" + "Agregado Correctamente");
+            System.out.println();
+            /*Lo comente porque si esta ingresado computadores o dispositivos, no deberia preguntar acerca del estudiante*/
 
             bandera = nuevoregistro("computador");
 
@@ -237,8 +237,9 @@ public class metodosregistro {
             o.setPrecio(v.validarFloat("ingrese el precio de su tablet: ",
 
                     "ERROR! VERIFIQUE EL TIPO DE DATO E INTENTE NUEVAMENTE"));
+
             String almacenamientoTablet = v.validarConRegex(
-                    "¿Que sistema operativo tiene el computador " + o.getMarca() + ", " + o.getSerial()
+                    "Cantidad de almacenamiento: " + o.getMarca() + ", " + o.getSerial() //antes preguntaba el sistema operativo
                             + "? \n1. 256 GB. \n2. 512 GB. \n3. 1 TB.\n",
                     "^[1-3]+$", "Porfavor ingrese una opcion valida");
             int almacenamiento = Integer.parseInt(almacenamientoTablet);

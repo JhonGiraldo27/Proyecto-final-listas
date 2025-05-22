@@ -73,7 +73,7 @@ public class objEst_dis {
                 "Telefono: " + Telefono + "\n" +
                 "Modalidad: " + Modalidad + "\n" +
                 "Cantidad de Asignaturas: " + Cantidad_asignaturas + "\n" +
-                "Tablet Prestada: " + (Serial.equals("null")|| Serial == null ? "ninguna" : Serial);
+                "Tablet Prestada: " + (Serial == null ? "ninguna" : Serial); //elimine el Serial.equals("null") porque me arrojaba una excepcion
     }
 
 }
