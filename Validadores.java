@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Validadores {
@@ -47,5 +49,21 @@ public class Validadores {
 
     public String validarNoCaracteresEspeciales(String mensaje) {
         return validarConRegex(mensaje, "^[a-zA-Z0-9]+$", "Error! No ingrese caracteres especiales\ntente nuevamente: ");
+    }
+
+    public boolean verificarDocumentoEstudianteIngenieria(String documento){
+        ImportarArchivo imp = new ImportarArchivo();
+        LinkedList<objEst_ing> ingenieria = imp.importarArchivoEstIng();
+
+        for(objEst_ing e : ingenieria){
+            if (e.getCedula().equalsIgnoreCase(documento)){
+                System.out.println("El Estudiante existe en el sistema");
+                System.out.println(e);
+                return true;
+            }
+                System.out.println("El Usuario no existe en el sistema");
+                System.out.println("Si nesesita un prestamo, es nesesario registrar el usuario");
+            }
+        return false;
     }
 }

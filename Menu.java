@@ -81,9 +81,37 @@ public class Menu {
             int c = Integer.parseInt(optmenuing);
 
             switch (c) {
-                //falta hacer el paso siguiente
                 case 1:
-                    // mPrst.();
+                    //Ok procedo a preguntar los datos como CC y nombre, curso
+                    Validadores validador = new Validadores();
+                    Integer documento = validador.validarentero("Ingrese el número de documento", "Error, Ingrese solamente Números");
+                    while(documento.toString().length() > 10){
+                        System.out.println("El documento Solamente debe contener maximo 10 caracteres. \n ingrese nuevamente el Número de documento ");
+                        documento = sc.nextInt();
+                    }
+                    //ahora debo verificar si el estudiante existe en la base de dato
+                    boolean existe = validador.verificarDocumentoEstudianteIngenieria(documento.toString());
+                    if(existe){
+                        int opt = validador.validarentero("Que Equipo desea prestar? " + " \n " + "[1] Computador \n [2] Tablet \n ", "Eleccion Incorrecta");
+                        while (opt > 2){
+                            System.out.println("Eleccion Incorrecta");
+                            opt = validador.validarentero("Que Equipo desea prestar? " + " \n " + "[1] Computador \n [2] Tablet \n ", "Eleccion Incorrecta");
+                        }
+                        if (opt == 1){
+                            System.out.println("EN CONTRUCCION");
+                        } else if (opt == 2) {
+                            MetodosPrestamo metodosPrestamo = new MetodosPrestamo();
+                            //importar las tablets disponibles
+                            ImportarArchivo importarArchivo = new ImportarArchivo();
+                            LinkedList<ObjTableta_grafica> tablets_list = importarArchivo.importarArchivoTablets();
+                            if (!tablets_list.isEmpty()){
+                                System.out.println("TABLETS DISPONIBLES:");
+                                for (ObjTableta_grafica t : tablets_list) {
+                                    System.out.println(t);
+                                }
+                            }
+                        }
+                    }
                     break;
                 case 2:
                     // mPrst.();
@@ -92,6 +120,8 @@ public class Menu {
                     // mPrst.();
                     break;
                 case 4:
+                    //aqui tengo que buscar el equipo pero ¿los que estan prestamos? o los que estan ¿disponibles?
+
                     // mPrst.();
                     break;
 
