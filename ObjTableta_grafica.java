@@ -10,12 +10,16 @@ public class ObjTableta_grafica {
     public ObjTableta_grafica() {
     }
 
-    public boolean isDisponible() {
+    public boolean getDisponible() {
         return Disponible;
-    }
+    } //antes era isDisponible
 
-    public void setDisponible(boolean disponible) {
-        Disponible = disponible;
+       public void setDisponible(String disponible){
+        if (disponible.equalsIgnoreCase("Disponible")) {
+            this.Disponible = true;
+        } else if (disponible.equalsIgnoreCase("Prestado")) {
+            this.Disponible = false;
+        }
     }
 
     public String getSerial() {

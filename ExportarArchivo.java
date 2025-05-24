@@ -17,7 +17,7 @@ public class ExportarArchivo {
                     escriba.write("Serial: " + item.getSerial() + "\n");
                     escriba.write("Sistema Operativo: " + item.getSistem_op() + "\n");
                     escriba.write("Tamaño: " + item.getTamaño() + "\n");
-                    escriba.write("Disponible : " + item.isDisponible() + "\n");                    
+                    escriba.write("Disponible : " + item.getDisponible() + "\n");
                     escriba.write("---------------------------------------\n");
 
                 }
@@ -43,7 +43,7 @@ public class ExportarArchivo {
                     escriba.write("Serial: " + item.getSerial() + "\n");
                     escriba.write("Tamaño: " + item.getTamaño() + "\n");
                     escriba.write("Almacenamiento: " + item.getAlmacenamiento() + "\n");
-                    escriba.write("Disponible : " + item.isDisponible() + "\n");
+                    escriba.write("Disponible : " + item.getDisponible() + "\n");
                     escriba.write("---------------------------------------\n");
 
                 }

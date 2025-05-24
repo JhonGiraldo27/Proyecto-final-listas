@@ -87,7 +87,7 @@ public class Menu {
                     Integer documento = validador.validarentero("Ingrese el número de documento", "Error, Ingrese solamente Números");
                     while(documento.toString().length() > 10){
                         System.out.println("El documento Solamente debe contener maximo 10 caracteres. \n ingrese nuevamente el Número de documento ");
-                        documento = sc.nextInt();
+                        documento = validador.validarentero("Ingrese el número de documento", "Error, Ingrese solamente Números");
                     }
                     //ahora debo verificar si el estudiante existe en la base de dato
                     boolean existe = validador.verificarDocumentoEstudianteIngenieria(documento.toString());
@@ -98,7 +98,19 @@ public class Menu {
                             opt = validador.validarentero("Que Equipo desea prestar? " + " \n " + "[1] Computador \n [2] Tablet \n ", "Eleccion Incorrecta");
                         }
                         if (opt == 1){
-                            System.out.println("EN CONTRUCCION");
+                            // Implementar el préstamo de computador
+                            ImportarArchivo importarArchivo = new ImportarArchivo();
+                            LinkedList<ObjComp_portatil> computadores_list = importarArchivo.importarArchivoComputadores();
+                            if (!computadores_list.isEmpty()){
+                                System.out.println("COMPUTADORES DISPONIBLES:");
+                                for (ObjComp_portatil o : computadores_list) {
+                                    System.out.println(o);
+                                }
+                                String serialComputador = v.validarConRegex("Ingrese el serial del computador a prestar: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
+                                mPrst.prestarComputadorAIngenieria(computadores_list, documento.toString(), serialComputador);
+                            } else {
+                                System.out.println("No hay computadores disponibles para préstamo.");
+                            }
                         } else if (opt == 2) {
                             MetodosPrestamo metodosPrestamo = new MetodosPrestamo();
                             //importar las tablets disponibles
@@ -109,20 +121,99 @@ public class Menu {
                                 for (ObjTableta_grafica t : tablets_list) {
                                     System.out.println(t);
                                 }
+                                
+                                String serialTablet = v.validarConRegex("Ingrese el serial de la tablet a prestar: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
+                                mPrst.prestarTabletAIngenieria(tablets_list, documento.toString(), serialTablet);
+                            } else {
+                                System.out.println("No hay tablets disponibles para préstamo.");
                             }
                         }
+                    } else {
+                        System.out.println("El estudiante con documento " + documento + " no está registrado en el sistema.");
                     }
                     break;
                 case 2:
-                    // mPrst.();
+                    // Modificar préstamo de equipo
+                    documento = v.validarentero("Ingrese el número de documento del estudiante: ", "Error, Ingrese solamente Números");
+                    while(documento.toString().length() > 10){
+                        System.out.println("El documento Solamente debe contener maximo 10 caracteres. \n ingrese nuevamente el Número de documento ");
+                        documento = sc.nextInt();
+                    }
+                    
+                    existe = v.verificarDocumentoEstudianteIngenieria(documento.toString());
+                    if(existe){
+                        System.out.println("¿Qué tipo de préstamo desea modificar?");
+                        int optMod = v.validarentero("Seleccione una opción: \n[1] Préstamo de Computador \n[2] Préstamo de Tablet", "Elección Incorrecta");
+                        while (optMod > 2){
+                            System.out.println("Elección Incorrecta");
+                            optMod = v.validarentero("Seleccione una opción: \n[1] Préstamo de Computador \n[2] Préstamo de Tablet", "Elección Incorrecta");
+                        }
+                        
+                        if (optMod == 1) {
+                            mPrst.modificarPrestamoComputador(documento.toString());
+                        } else {
+                            mPrst.modificarPrestamoTablet(documento.toString());
+                        }
+                    } else {
+                        System.out.println("El estudiante con documento " + documento + " no está registrado en el sistema.");
+                    }
                     break;
                 case 3:
-                    // mPrst.();
+                    // Devolución de equipo
+                    documento = v.validarentero("Ingrese el número de documento del estudiante: ", "Error, Ingrese solamente Números");
+                    while(documento.toString().length() > 10){
+                        System.out.println("El documento Solamente debe contener maximo 10 caracteres. \n ingrese nuevamente el Número de documento ");
+                        documento = sc.nextInt();
+                    }
+                    
+                    existe = v.verificarDocumentoEstudianteIngenieria(documento.toString());
+                    if(existe){
+                        System.out.println("¿Qué tipo de equipo desea devolver?");
+                        int optDev = v.validarentero("Seleccione una opción: \n[1] Computador \n[2] Tablet", "Elección Incorrecta");
+                        while (optDev > 2){
+                            System.out.println("Elección Incorrecta");
+                            optDev = v.validarentero("Seleccione una opción: \n[1] Computador \n[2] Tablet", "Elección Incorrecta");
+                        }
+                        
+                        if (optDev == 1) {
+                            String serialEquipo = v.validarConRegex("Ingrese el serial del computador a devolver: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
+                            mPrst.devolverComputador(documento.toString(), serialEquipo);
+                        } else {
+                            String serialEquipo = v.validarConRegex("Ingrese el serial de la tablet a devolver: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
+                            mPrst.devolverTablet(documento.toString(), serialEquipo);
+                        }
+                    } else {
+                        System.out.println("El estudiante con documento " + documento + " no está registrado en el sistema.");
+                    }
                     break;
                 case 4:
-                    //aqui tengo que buscar el equipo pero ¿los que estan prestamos? o los que estan ¿disponibles?
+                    // Buscar equipo
+                    System.out.println("¿Qué desea buscar?");
+                    int optBusqueda = v.validarentero("Seleccione una opción: \n[1] Equipos disponibles \n[2] Equipos prestados \n[3] Buscar por serial", "Elección Incorrecta");
+                    while (optBusqueda > 3){
+                        System.out.println("Elección Incorrecta");
+                        optBusqueda = v.validarentero("Seleccione una opción: \n[1] Equipos disponibles \n[2] Equipos prestados \n[3] Buscar por serial", "Elección Incorrecta");
+                    }
+                    
+                    switch(optBusqueda) {
+                        case 1:
+                            System.out.println("¿Qué tipo de equipo?");
+                            int optTipo = v.validarentero("Seleccione una opción: \n[1] Computadores \n[2] Tablets", "Elección Incorrecta");
+                            if (optTipo == 1) {
+                                mPrst.mostrarComputadoresDisponibles();
+                            } else {
+                                mPrst.mostrarTabletsDisponibles();
+                            }
+                            break;
+                        case 2:
+                            MetodosMostrarListas mostrarListas = new MetodosMostrarListas();
 
-                    // mPrst.();
+                            break;
+                        case 3:
+                            String serialBusqueda = v.validarConRegex("Ingrese el serial a buscar: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
+                            mPrst.buscarEquipoPorSerial(serialBusqueda);
+                            break;
+                    }
                     break;
 
                 default:
@@ -130,9 +221,7 @@ public class Menu {
                     banderamenu = false;
                     break;
             }
-
         }
-
     }
 
     public static void menuRegistrar(Scanner sc, LinkedList<ObjComp_portatil> computadores,
