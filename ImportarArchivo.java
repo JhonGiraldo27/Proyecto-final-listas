@@ -126,7 +126,8 @@ public LinkedList<ObjComp_portatil> importarArchivoComputadores() {
             } else if (linea.startsWith("Tamaño: ")) {
                 comp.setTamaño(Float.parseFloat(linea.substring(8).trim()));
             } else if (linea.startsWith("Disponible : ")) {
-                comp.setDisponible(Boolean.parseBoolean(linea.substring(12).trim()));
+                //comp.setDisponible(Boolean.parseBoolean(linea.substring(12).trim()));
+                comp.setDisponible("disponible");
             } else if (linea.startsWith("---------------------------------------")) {
                 if (comp != null) {
                     listaComputadores.add(comp);
@@ -171,7 +172,8 @@ public LinkedList<ObjTableta_grafica> importarArchivoTablets() {
             } else if (linea.startsWith("Almacenamiento: ")) {
                 tablet.setAlmacenamiento(linea.substring(15).trim());
             } else if (linea.startsWith("Disponible : ")) {
-                tablet.setDisponible(Boolean.parseBoolean(linea.substring(12).trim()));
+               // tablet.setDisponible(Boolean.parseBoolean(linea.substring(12).trim()));
+                tablet.setDisponible("disponible");
             } else if (linea.startsWith("---------------------------------------")) {
                 if (tablet != null) {
                     listaTablets.add(tablet);

@@ -61,8 +61,9 @@ public class Validadores {
                 System.out.println(e);
                 return true;
             }
-                System.out.println("El Usuario no existe en el sistema");
+                //System.out.println("El Usuario no existe en el sistema");
                 System.out.println("Si nesesita un prestamo, es nesesario registrar el usuario");
+                break;
             }
         return false;
     }

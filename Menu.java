@@ -22,7 +22,7 @@ public class Menu {
         MetodosPrestamo mPrst = new MetodosPrestamo();
 
         int optmenu;
-        System.out.println("---------------------------UNIVERSIDAD SAN JUAN DE DIOS------------------------ \n"
+        System.out.println("----------------റ്റംUNIVERSIDAD SAN JUAN DE DIOS------------------------ \n"
                 + "\n------------------SISTEMA DE GESTION PARA PRESTAMOS DE DISPOSITIVOS------------");
 
         do {
@@ -42,7 +42,8 @@ public class Menu {
                     break;
 
                 case 2:
-                    menuEstudiantesDis(exp, Est_dis, Tabl_graf, sc, v, mPrst);;
+                    menuEstudiantesDis(exp, Est_dis, Tabl_graf, sc, v, mPrst);
+                    ;
 
                     break;
 
@@ -84,24 +85,24 @@ public class Menu {
                 case 1:
                     //Ok procedo a preguntar los datos como CC y nombre, curso
                     Validadores validador = new Validadores();
-                    Integer documento = validador.validarentero("Ingrese el número de documento", "Error, Ingrese solamente Números");
-                    while(documento.toString().length() > 10){
+                    Integer documento = validador.validarentero("Ingrese el número de documento ", "Error, Ingrese solamente Números");
+                    while (documento.toString().length() > 10) {
                         System.out.println("El documento Solamente debe contener maximo 10 caracteres. \n ingrese nuevamente el Número de documento ");
                         documento = validador.validarentero("Ingrese el número de documento", "Error, Ingrese solamente Números");
                     }
                     //ahora debo verificar si el estudiante existe en la base de dato
                     boolean existe = validador.verificarDocumentoEstudianteIngenieria(documento.toString());
-                    if(existe){
+                    if (existe) {
                         int opt = validador.validarentero("Que Equipo desea prestar? " + " \n " + "[1] Computador \n [2] Tablet \n ", "Eleccion Incorrecta");
-                        while (opt > 2){
+                        while (opt > 2) {
                             System.out.println("Eleccion Incorrecta");
                             opt = validador.validarentero("Que Equipo desea prestar? " + " \n " + "[1] Computador \n [2] Tablet \n ", "Eleccion Incorrecta");
                         }
-                        if (opt == 1){
+                        if (opt == 1) {
                             // Implementar el préstamo de computador
                             ImportarArchivo importarArchivo = new ImportarArchivo();
                             LinkedList<ObjComp_portatil> computadores_list = importarArchivo.importarArchivoComputadores();
-                            if (!computadores_list.isEmpty()){
+                            if (!computadores_list.isEmpty()) {
                                 System.out.println("COMPUTADORES DISPONIBLES:");
                                 for (ObjComp_portatil o : computadores_list) {
                                     System.out.println(o);
@@ -116,12 +117,12 @@ public class Menu {
                             //importar las tablets disponibles
                             ImportarArchivo importarArchivo = new ImportarArchivo();
                             LinkedList<ObjTableta_grafica> tablets_list = importarArchivo.importarArchivoTablets();
-                            if (!tablets_list.isEmpty()){
+                            if (!tablets_list.isEmpty()) {
                                 System.out.println("TABLETS DISPONIBLES:");
                                 for (ObjTableta_grafica t : tablets_list) {
                                     System.out.println(t);
                                 }
-                                
+
                                 String serialTablet = v.validarConRegex("Ingrese el serial de la tablet a prestar: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
                                 mPrst.prestarTabletAIngenieria(tablets_list, documento.toString(), serialTablet);
                             } else {
@@ -135,20 +136,20 @@ public class Menu {
                 case 2:
                     // Modificar préstamo de equipo
                     documento = v.validarentero("Ingrese el número de documento del estudiante: ", "Error, Ingrese solamente Números");
-                    while(documento.toString().length() > 10){
+                    while (documento.toString().length() > 10) {
                         System.out.println("El documento Solamente debe contener maximo 10 caracteres. \n ingrese nuevamente el Número de documento ");
                         documento = sc.nextInt();
                     }
-                    
+
                     existe = v.verificarDocumentoEstudianteIngenieria(documento.toString());
-                    if(existe){
+                    if (existe) {
                         System.out.println("¿Qué tipo de préstamo desea modificar?");
                         int optMod = v.validarentero("Seleccione una opción: \n[1] Préstamo de Computador \n[2] Préstamo de Tablet", "Elección Incorrecta");
-                        while (optMod > 2){
+                        while (optMod > 2) {
                             System.out.println("Elección Incorrecta");
                             optMod = v.validarentero("Seleccione una opción: \n[1] Préstamo de Computador \n[2] Préstamo de Tablet", "Elección Incorrecta");
                         }
-                        
+
                         if (optMod == 1) {
                             mPrst.modificarPrestamoComputador(documento.toString());
                         } else {
@@ -161,20 +162,20 @@ public class Menu {
                 case 3:
                     // Devolución de equipo
                     documento = v.validarentero("Ingrese el número de documento del estudiante: ", "Error, Ingrese solamente Números");
-                    while(documento.toString().length() > 10){
+                    while (documento.toString().length() > 10) {
                         System.out.println("El documento Solamente debe contener maximo 10 caracteres. \n ingrese nuevamente el Número de documento ");
                         documento = sc.nextInt();
                     }
-                    
+
                     existe = v.verificarDocumentoEstudianteIngenieria(documento.toString());
-                    if(existe){
+                    if (existe) {
                         System.out.println("¿Qué tipo de equipo desea devolver?");
                         int optDev = v.validarentero("Seleccione una opción: \n[1] Computador \n[2] Tablet", "Elección Incorrecta");
-                        while (optDev > 2){
+                        while (optDev > 2) {
                             System.out.println("Elección Incorrecta");
                             optDev = v.validarentero("Seleccione una opción: \n[1] Computador \n[2] Tablet", "Elección Incorrecta");
                         }
-                        
+
                         if (optDev == 1) {
                             String serialEquipo = v.validarConRegex("Ingrese el serial del computador a devolver: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
                             mPrst.devolverComputador(documento.toString(), serialEquipo);
@@ -190,12 +191,12 @@ public class Menu {
                     // Buscar equipo
                     System.out.println("¿Qué desea buscar?");
                     int optBusqueda = v.validarentero("Seleccione una opción: \n[1] Equipos disponibles \n[2] Equipos prestados \n[3] Buscar por serial", "Elección Incorrecta");
-                    while (optBusqueda > 3){
+                    while (optBusqueda > 3) {
                         System.out.println("Elección Incorrecta");
                         optBusqueda = v.validarentero("Seleccione una opción: \n[1] Equipos disponibles \n[2] Equipos prestados \n[3] Buscar por serial", "Elección Incorrecta");
                     }
-                    
-                    switch(optBusqueda) {
+
+                    switch (optBusqueda) {
                         case 1:
                             System.out.println("¿Qué tipo de equipo?");
                             int optTipo = v.validarentero("Seleccione una opción: \n[1] Computadores \n[2] Tablets", "Elección Incorrecta");
@@ -225,9 +226,9 @@ public class Menu {
     }
 
     public static void menuRegistrar(Scanner sc, LinkedList<ObjComp_portatil> computadores,
-            LinkedList<objEst_dis> Est_dis, LinkedList<objEst_ing> Est_ing,
-            LinkedList<ObjTableta_grafica> Tabl_graf, Validadores v, metodosregistro m,
-            MetodosEditarRegistros mEditar) {
+                                     LinkedList<objEst_dis> Est_dis, LinkedList<objEst_ing> Est_ing,
+                                     LinkedList<ObjTableta_grafica> Tabl_graf, Validadores v, metodosregistro m,
+                                     MetodosEditarRegistros mEditar) {
         boolean banderamenu4 = true;
         while (banderamenu4) {
             System.out.println("\n-------REGISTRAR------\n"
@@ -326,7 +327,7 @@ public class Menu {
 
     }
 
-    public static void menuEstudiantesDis(ExportarArchivo exp,LinkedList<objEst_dis> Est_dis,LinkedList<ObjTableta_grafica> Tablets,Scanner sc, Validadores v, MetodosPrestamo mPrst) {
+    public static void menuEstudiantesDis(ExportarArchivo exp, LinkedList<objEst_dis> Est_dis, LinkedList<ObjTableta_grafica> Tablets, Scanner sc, Validadores v, MetodosPrestamo mPrst) {
         boolean banderamenu2 = true;
         while (banderamenu2) {
             System.out.println("\n-MENU PARA ESTUDIANTES DE DISEÑO-\n"
@@ -340,26 +341,222 @@ public class Menu {
 
             switch (c) {
                 case 1:
-                    mPrst.prestarTabletADiseno(Tablets, Est_dis, v, exp);;
+                    mPrst.prestarTabletADiseno(Tablets, Est_dis, v, exp);
                     break;
-                // falta aqui lo que tiene que hacer
                 case 2:
-                    // mPrst.();
+                    // Modificar préstamo de equipo
+                    int option = v.validarentero("¿Qué equipo desea modificar?\n[1] Computador [2] Tablet: ", "Error, ingrese una opcion valida");
+                    String documento = v.validarNoCaracteresEspeciales("Ingrese el documento del estudiante: ");
+
+                    // Verificar si existe el estudiante de diseño
+                    boolean existeEstudiante = false;
+                    for (objEst_dis estudiante : Est_dis) {
+                        if (estudiante.getCedula().equalsIgnoreCase(documento)) {
+                            existeEstudiante = true;
+                            System.out.println("Estudiante encontrado: " + estudiante.getNombre() + " " + estudiante.getApellido());
+                            break;
+                        }
+                    }
+
+                    if (!existeEstudiante) {
+                        System.out.println("El estudiante con documento " + documento + " no está registrado en el sistema.");
+                        break;
+                    }
+
+                    if (option == 1) {
+                        System.out.println("Los estudiantes de diseño solo pueden solicitar tablets.");
+                        System.out.println("Si necesita un computador, debe solicitarlo a través del menú de estudiantes de ingeniería.");
+                    } else if (option == 2) {
+                        // Verificar si la función modificarPrestamoTabletDiseno existe, si no, implementarla
+                        // Importar listas necesarias
+                        ImportarArchivo importar = new ImportarArchivo();
+                        LinkedList<objEst_dis> estudiantes = importar.importarArchivoEstDis();
+                        LinkedList<ObjTableta_grafica> tablets = importar.importarArchivoTablets();
+                        boolean encontrado = false;
+
+                        for (objEst_dis estudiante : estudiantes) {
+                            if (estudiante.getCedula().equals(documento) && estudiante.getSerial() != null) {
+                                encontrado = true;
+                                System.out.println("Estudiante: " + estudiante.getNombre() + " " + estudiante.getApellido());
+                                System.out.println("Tablet prestada actualmente: " + estudiante.getSerial());
+
+                                // Mostrar opciones de modificación
+                                System.out.println("\n¿Qué desea modificar?");
+                                System.out.println("1. Cambiar por otra tablet");
+                                System.out.println("2. Cancelar");
+
+                                int opcion = v.validarentero("Ingrese una opción: ", "Error! Ingrese una opción válida.");
+
+                                if (opcion == 1) {
+                                    // Liberar la tablet actual
+                                    String serialActual = estudiante.getSerial();
+                                    for (ObjTableta_grafica tablet : tablets) {
+                                        if (tablet.getSerial().equals(serialActual)) {
+                                            tablet.setDisponible("Disponible");
+                                            break;
+                                        }
+                                    }
+
+                                    // Mostrar tablets disponibles
+                                    System.out.println("\nTablets disponibles:");
+                                    boolean hayDisponibles = false;
+                                    for (ObjTableta_grafica tablet : tablets) {
+                                        if (tablet.getDisponible()) {
+                                            System.out.println(tablet);
+                                            hayDisponibles = true;
+                                        }
+                                    }
+
+                                    if (!hayDisponibles) {
+                                        System.out.println("No hay tablets disponibles para cambio.");
+                                        estudiante.setSerial(serialActual); // Mantener la misma
+                                        break;
+                                    }
+
+                                    // Seleccionar nueva tablet
+                                    String nuevoSerial = v.validarConRegex("Ingrese el serial de la nueva tablet: ",
+                                            "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
+
+                                    boolean serialValido = false;
+                                    for (ObjTableta_grafica tablet : tablets) {
+                                        if (tablet.getSerial().equals(nuevoSerial) && tablet.getDisponible()) {
+                                            tablet.setDisponible("Prestado");
+                                            estudiante.setSerial(nuevoSerial);
+                                            serialValido = true;
+                                            System.out.println("Cambio de tablet realizado con éxito.");
+                                            break;
+                                        }
+                                    }
+
+                                    if (!serialValido) {
+                                        System.out.println("El serial ingresado no corresponde a una tablet disponible.");
+                                        estudiante.setSerial(serialActual); // Mantener la misma
+                                    }
+                                } else {
+                                    System.out.println("Operación cancelada.");
+                                }
+
+                                // Guardar cambios
+                                exp.exportarArchivoEstDis(estudiantes);
+                                exp.exportarArchivoTablets(tablets);
+                                break;
+                            }
+                        }
+
+                        if (!encontrado) {
+                            System.out.println("El estudiante no tiene ninguna tablet prestada actualmente.");
+                        }
+                    }
                     break;
                 case 3:
-                    // mPrst.();
+                    // Devolución de equipo
+                    documento = v.validarNoCaracteresEspeciales("Ingrese el documento del estudiante: ");
+
+                    // Verificar si existe el estudiante y tiene préstamos
+                    ImportarArchivo importar = new ImportarArchivo();
+                    LinkedList<objEst_dis> estudiantes = importar.importarArchivoEstDis();
+                    LinkedList<ObjTableta_grafica> tablets = importar.importarArchivoTablets();
+                    boolean encontrado = false;
+
+                    for (objEst_dis estudiante : estudiantes) {
+                        if (estudiante.getCedula().equals(documento)) {
+                            if (estudiante.getSerial() != null && !estudiante.getSerial().isEmpty()) {
+                                encontrado = true;
+                                System.out.println("Estudiante: " + estudiante.getNombre() + " " + estudiante.getApellido());
+                                System.out.println("Tablet prestada: " + estudiante.getSerial());
+
+                                // Confirmar devolución
+                                String confirmar = v.validarConRegex("¿Desea devolver esta tablet? (S/N): ", "^[SsNn]$",
+                                        "Error! Ingrese S para confirmar o N para cancelar.");
+
+                                if (confirmar.equalsIgnoreCase("S")) {
+                                    String serialDevolver = estudiante.getSerial();
+
+                                    // Actualizar estado del estudiante
+                                    estudiante.setSerial(null);
+
+                                    // Actualizar estado de la tablet
+                                    for (ObjTableta_grafica tablet : tablets) {
+                                        if (tablet.getSerial().equals(serialDevolver)) {
+                                            tablet.setDisponible("Disponible");
+                                            System.out.println("Tablet con serial " + serialDevolver + " devuelta exitosamente.");
+                                            break;
+                                        }
+                                    }
+
+                                    // Guardar cambios
+                                    exp.exportarArchivoEstDis(estudiantes);
+                                    exp.exportarArchivoTablets(tablets);
+                                } else {
+                                    System.out.println("Operación cancelada.");
+                                }
+                            } else {
+                                System.out.println("El estudiante no tiene ninguna tablet prestada actualmente.");
+                            }
+                            break;
+                        }
+                    }
+
+                    if (!encontrado) {
+                        System.out.println("No se encontró un estudiante con ese documento o no tiene préstamos activos.");
+                    }
                     break;
                 case 4:
-                    // mPrst.();
-                    break;
+                    // Buscar equipo
+                    System.out.println("¿Qué desea buscar?");
+                    int optBusqueda = v.validarentero("Seleccione una opción: \n[1] Tablets disponibles \n[2] Tablets prestadas \n[3] Buscar por serial", "Elección Incorrecta");
 
+                    switch (optBusqueda) {
+                        case 1:
+                            // Mostrar tablets disponibles
+                            mPrst.mostrarTabletsDisponibles();
+                            break;
+                        case 2:
+                            // Mostrar tablets prestadas a estudiantes de diseño
+                            importar = new ImportarArchivo();
+                            estudiantes = importar.importarArchivoEstDis();
+                            tablets = importar.importarArchivoTablets();
+                            boolean hayPrestados = false;
+
+                            System.out.println("\n----- TABLETS PRESTADAS A ESTUDIANTES DE DISEÑO -----");
+                            for (objEst_dis estudiante : estudiantes) {
+                                if (estudiante.getSerial() != null && !estudiante.getSerial().isEmpty()) {
+                                    System.out.println("Estudiante: " + estudiante.getNombre() + " " + estudiante.getApellido());
+                                    System.out.println("Documento: " + estudiante.getCedula());
+                                    System.out.println("Serial de la tablet: " + estudiante.getSerial());
+
+                                    // Buscar detalles de la tablet
+                                    for (ObjTableta_grafica tablet : tablets) {
+                                        if (tablet.getSerial().equals(estudiante.getSerial())) {
+                                            System.out.println("Marca: " + tablet.getMarca());
+                                            break;
+                                        }
+                                    }
+
+                                    System.out.println("----------------------------------------");
+                                    hayPrestados = true;
+                                }
+                            }
+
+                            if (!hayPrestados) {
+                                System.out.println("No hay tablets prestadas actualmente a estudiantes de diseño.");
+                            }
+                            break;
+                        case 3:
+                            // Buscar por serial
+                            String serialBusqueda = v.validarConRegex("Ingrese el serial a buscar: ", "^[A-Za-z0-9-]+$", "Error! Ingrese un serial válido.");
+                            mPrst.buscarEquipoPorSerial(serialBusqueda);
+                            break;
+                        default:
+                            System.out.println("Opción inválida.");
+                            break;
+                    }
+                    break;
                 default:
                     System.out.println("Regresando al menú Principal");
                     banderamenu2 = false;
                     break;
             }
-
         }
-
     }
 }

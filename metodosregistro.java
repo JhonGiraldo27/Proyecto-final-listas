@@ -163,7 +163,7 @@ public class metodosregistro {
                     }
                 }
             }
-            o.setDisponible(true);
+            o.setDisponible("Disponible"); //pendiente a esta linea
 
             o.setMarca(v.validarSoloLetras("ingrese la marca del computador: "));
 
@@ -228,7 +228,7 @@ public class metodosregistro {
                     }
                 }
             }
-            o.setDisponible(true);
+            o.setDisponible("Disponible");
 
             o.setMarca(v.validarSoloLetras("ingrese la marca de la tablet: "));
 
