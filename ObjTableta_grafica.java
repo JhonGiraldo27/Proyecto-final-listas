@@ -7,20 +7,22 @@ public class ObjTableta_grafica {
     private float Peso;
     private boolean Disponible;
 
+    public void setDisponible(boolean disponible) {
+        Disponible = disponible;
+    }
+
+
+
+    public boolean isDisponible() {
+        return Disponible;
+    }
+
+
+
     public ObjTableta_grafica() {
     }
 
-    public boolean getDisponible() {
-        return Disponible;
-    } //antes era isDisponible
-
-       public void setDisponible(String disponible){
-        if (disponible.equalsIgnoreCase("Disponible")) {
-            this.Disponible = true;
-        } else if (disponible.equalsIgnoreCase("Prestado")) {
-            this.Disponible = false;
-        }
-    }
+   
 
     public String getSerial() {
         return Serial;

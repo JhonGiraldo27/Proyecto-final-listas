@@ -7,13 +7,15 @@ public class ObjComp_portatil {
     private String Procesador;
     private boolean Disponible;
 
+    public void setDisponible(boolean disponible) {
+        Disponible = disponible;
+    }
+
+
     public boolean getDisponible() {
         return Disponible;
     }
 
-    /*public void setDisponible(boolean disponible) {
-        Disponible = disponible;
-    }*/
 
     public ObjComp_portatil() {
     }
@@ -66,13 +68,7 @@ public class ObjComp_portatil {
         Procesador = procesador;
     }
 
-    public void setDisponible(String disponible){
-        if (disponible.equalsIgnoreCase("Disponible")) {
-            this.Disponible = true;
-        } else if (disponible.equalsIgnoreCase("Prestado")) {
-            this.Disponible = false;
-        }
-    }
+  
 
 
     public String toString() {

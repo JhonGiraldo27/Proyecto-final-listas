@@ -1,16 +1,8 @@
-Marca: DEll
-Precio: 250.0
-Procesador: AMD Ryzen.
-Serial: ADM2312
-Sistema Operativo: 1. Windows 10.
-Tamaño: 16.0
-Disponible : true
----------------------------------------
 Marca: hp
 Precio: 5022.0
 Procesador: Intel® Core™ i5.
 Serial: uav225
-Sistema Operativo: 1. Windows 11.
+Sistema Operativo: Windows 11.
 Tamaño: 15.0
 Disponible : true
 ---------------------------------------
@@ -18,7 +10,7 @@ Marca: victus
 Precio: 62.0
 Procesador: Intel® Core™ i5.
 Serial: usb112
-Sistema Operativo: 1. Windows 11.
+Sistema Operativo: Windows 11.
 Tamaño: 20.0
 Disponible : true
 ---------------------------------------
@@ -26,7 +18,39 @@ Marca: lenovo
 Precio: 78.0
 Procesador: AMD Ryzen.
 Serial: 144522
-Sistema Operativo: 1. Windows 10.
+Sistema Operativo: Windows 10.
 Tamaño: 55.0
+Disponible : true
+---------------------------------------
+Marca: Hp
+Precio: 120.0
+Procesador: AMD Ryzen.
+Serial: ASsdhau26
+Sistema Operativo: Windows 7.
+Tamaño: 12.0
+Disponible : true
+---------------------------------------
+Marca: hp
+Precio: 129.0
+Procesador: AMD Ryzen.
+Serial: amd3212
+Sistema Operativo: Windows 10.
+Tamaño: 15.0
+Disponible : true
+---------------------------------------
+Marca: Lenovos
+Precio: 1.5252142E12
+Procesador: Intel® Core™ i5.
+Serial: das231sadafase4212
+Sistema Operativo: Windows 10.
+Tamaño: 3.124355E11
+Disponible : true
+---------------------------------------
+Marca: Hp
+Precio: 2.5E7
+Procesador: AMD Ryzen.
+Serial: Anto124
+Sistema Operativo: Windows 7.
+Tamaño: 17.2
 Disponible : true
 ---------------------------------------

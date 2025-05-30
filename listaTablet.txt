@@ -4,7 +4,7 @@ Peso: 21.0
 Serial: UEW56F
 Tamaño: 23.0
 Almacenamiento: 512 GB
-Disponible : false
+Disponible : true
 ---------------------------------------
 Marca: Samsung
 Precio: 5.0
@@ -21,4 +21,12 @@ Serial: uuuss
 Tamaño: 8.0
 Almacenamiento: 512 GB
 Disponible : true
+---------------------------------------
+Marca: Lenovo
+Precio: 1.0
+Peso: 20.0
+Serial: Tablet2124
+Tamaño: 567892.0
+Almacenamiento: 256 GB
+Disponible : false
 ---------------------------------------

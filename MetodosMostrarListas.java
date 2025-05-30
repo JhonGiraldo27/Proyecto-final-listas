@@ -8,9 +8,9 @@ public class MetodosMostrarListas {
         } else {
             System.out.println("---------COMPUTADORES REGISTRADOS-------");
             System.out.println("-----------------------------------------");
-            for (ObjComp_portatil P : listaC) {
-                System.out.println(P);
-                System.out.println("-------------------------------------------------------");
+            for (ObjComp_portatil o : listaC) {
+                System.out.println(o);
+                System.out.println("------------------------------------------------");
 
             }
 
@@ -22,11 +22,11 @@ public class MetodosMostrarListas {
         if (listaT.isEmpty()) {
             System.out.println("No hay ningun registro de Tablets aún");
         } else {
-            System.out.println("---------TABLETS REGISTRADAS-------");
+            System.out.println("------------TABLETS REGISTRADAS----------");
             System.out.println("-----------------------------------------");
-            for (ObjTableta_grafica P : listaT) {
-                System.out.println(P);
-                System.out.println("-------------------------------------------------------");
+            for (ObjTableta_grafica o : listaT) {
+                System.out.println(o);
+                System.out.println("------------------------------------------------");
 
             }
 
@@ -40,9 +40,9 @@ public class MetodosMostrarListas {
         } else {
             System.out.println("---------ESTUDIANTES DE DISEÑO REGISTRADOS-------");
             System.out.println("-------------------------------------------------");
-            for (objEst_dis P : listaE) {
-                System.out.println(P);
-                System.out.println("-------------------------------------------------------");
+            for (objEst_dis o : listaE) {
+                System.out.println(o);
+                System.out.println("------------------------------------------------");
 
             }
 
@@ -56,9 +56,9 @@ public class MetodosMostrarListas {
         } else {
             System.out.println("---------ESTUDIANTES DE INGENIERIA REGISTRADOS-------");
             System.out.println("------------------------------------------------------");
-            for (objEst_ing P : listaE) {
-                System.out.println(P);
-                System.out.println("-------------------------------------------------------");
+            for (objEst_ing o : listaE) {
+                System.out.println(o);
+                System.out.println("------------------------------------------------");
 
             }
 

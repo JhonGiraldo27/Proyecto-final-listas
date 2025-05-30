@@ -1,45 +1,8 @@
-public class objEst_ing {
-    private String Cedula;
-    private String Nombre;
-    private String Apellido;
-    private String Telefono;
+public class objEst_ing extends EstudianteBase {
     private int Semestre_cursado;
     private float Prom_acum;
-    private String Serial;
 
     public objEst_ing() {
-    }
-
-    public String getCedula() {
-        return Cedula;
-    }
-
-    public void setCedula(String cedula) {
-        Cedula = cedula;
-    }
-
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String nombre) {
-        Nombre = nombre;
-    }
-
-    public String getApellido() {
-        return Apellido;
-    }
-
-    public void setApellido(String apellido) {
-        Apellido = apellido;
-    }
-
-    public String getTelefono() {
-        return Telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        Telefono = telefono;
     }
 
     public int getSemestre_cursado() {
@@ -58,14 +21,6 @@ public class objEst_ing {
         Prom_acum = prom_acum;
     }
 
-    public String getSerial() {
-        return Serial;
-    }
-
-    public void setSerial(String serial) {
-        Serial = serial;
-    }
-
     public String toString() {
         return "Cedula: " + Cedula + "\n" +
                 "Nombre: " + Nombre + "\n" +
@@ -73,7 +28,6 @@ public class objEst_ing {
                 "Telefono: " + Telefono + "\n" +
                 "Semestre: " + Semestre_cursado + "\n" +
                 "Promedio: " + Prom_acum + "\n" +
-                "Computador Prestado: " + (Serial.equals("null") || Serial == null ? "ninguno" : Serial);
+                "Computador Prestado: " + (Serial == null || Serial.equals("null") ? "ninguno" : Serial);
     }
-
 }

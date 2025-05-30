@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Validadores {
@@ -24,6 +22,7 @@ public class Validadores {
                 System.out.println(mensajeError);
 
             }
+
         } while (!valido);
 
         return entrada;
@@ -39,34 +38,23 @@ public class Validadores {
         return Float.parseFloat(entrada);
     }
 
-    public String validarSoloNumeros(String mensaje) {
-        return validarConRegex(mensaje, "^[0-9]+$", "Error! Ingrese solo valores numericos");
-    }
-
     public String validarSoloLetras(String mensaje) {
-        return validarConRegex(mensaje, "^[a-zA-Z\\s]+$", "Error! Ingrese solo caracteres alfabeticos");
+        return validarConRegex(mensaje, "^[a-zA-Z\\s]+$", "Ingrese solo caracteres alfabeticos");
     }
 
     public String validarNoCaracteresEspeciales(String mensaje) {
-        return validarConRegex(mensaje, "^[a-zA-Z0-9]+$", "Error! No ingrese caracteres especiales\ntente nuevamente: ");
+        return validarConRegex(mensaje, "^[a-zA-Z0-9]+$",
+                "No ingrese caracteres especiales, intente nuevamente.");
     }
 
-    public boolean verificarDocumentoEstudianteIngenieria(String documento){
-        ImportarArchivo imp = new ImportarArchivo();
-        LinkedList<objEst_ing> ingenieria = imp.importarArchivoEstIng();
-
-        for(objEst_ing e : ingenieria){
-            if (e.getCedula().equalsIgnoreCase(documento)){
-                System.out.println("El Estudiante existe en el sistema");
-                System.out.println(e);
-                return true;
-            }
-                //System.out.println("El Usuario no existe en el sistema");
-                System.out.println("Si nesesita un prestamo, es nesesario registrar el usuario");
-                break;
-            }
-        return false;
+    public String validarCedula(String mensaje) {
+        return validarConRegex(mensaje, "^\\d{7,10}$", "Debe ingresar solo numeros entre 7 y 10 caracteres");
     }
 
+    public String validarNumeroTel(String mensaje) {
+        return validarConRegex(mensaje, "^\\d{7, 10}$",
+                "--------------------\nIngrese solo numeros, Minimo 7 - Maximo 10 caracteres \n" +
+                        "");
+    }
 
 }
