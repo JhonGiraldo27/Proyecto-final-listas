@@ -9,9 +9,9 @@ public class metodosregistro {
     private boolean nuevoregistro(String tipoRegistro) {
 
         String entradatemp = v.validarConRegex(
-                "¿Desea ingresar otro " + tipoRegistro + " ? \n1. Sí \n2. Volver al menú.\nOpcion: ",
+                "¿Desea ingresar otro " + tipoRegistro + " \n1. Sí \n2. Volver al menú.\nOpcion: ",
                 "^[1-2]+$",
-                "Error Ingrese un numero valido (1,2)");
+                "Ingrese un numero valido (1,2)");
 
         int opcion = Integer.parseInt(entradatemp);
 
@@ -32,7 +32,7 @@ public class metodosregistro {
         while (bandera) {
             objEst_dis o = new objEst_dis();
 
-            o.setCedula(v.validarSoloNumeros("Ingrese su numero de cedula: "));
+            o.setCedula(v.validarCedula("Ingrese su numero de cedula: "));
 
             if (!Est_dis.isEmpty()) {
                 for (objEst_dis rep : Est_dis) {
@@ -44,15 +44,17 @@ public class metodosregistro {
                     }
                 }
             }
+            o.setSerial(null);
 
             o.setNombre(v.validarSoloLetras("Ingrese su Nombre: "));
 
             o.setApellido(v.validarSoloLetras("Ingrese su Apellido: "));
 
-            o.setTelefono(v.validarSoloNumeros("ingrese Su numero de Telefono: "));
+            o.setTelefono(v.validarNumeroTel("ingrese Su numero de Telefono: "));
 
-            String entrada = v.validarConRegex("¿Cuál es su modalidad de estudio?: \n1. Presencial\n2. Virtual: ",
-                    "^[1-2]+$", "☣️ERROR! Porfavor ingrese una opcion valida");
+            String entrada = v.validarConRegex(
+                    "¿Cuál es su modalidad de estudio?: \n1. Presencial\n2. Virtual\nOpcion:  ",
+                    "^[1-2]+$", "Porfavor ingrese una opcion valida");
             int modalidad = Integer.parseInt(entrada);
 
             if (modalidad == 1) {
@@ -63,18 +65,11 @@ public class metodosregistro {
 
             }
 
-            int cantAsignaturas;
-
-            do {
-                cantAsignaturas = v.validarentero("¿Actualmente Cual es la cantidad de asignaturas que cursa?: ",
-                        "porfavor Ingrese un numero entero");
-                if (cantAsignaturas > 10) {
-                    System.out
-                            .println("Error: Estás ingresando mas asignaturas de las permitidas, intenta nuevamente ");
-
-                }
-
-            } while (cantAsignaturas > 10);
+            String entradaAsignaturas = v.validarConRegex(
+                    "¿Actualmente Cual es la cantidad de asignaturas que cursa en el semestre actual? (1-10): ",
+                    "^[1-9]$|^10$",
+                    "por favor Ingrese un numero entero, recuerde que el maximo de asignaturas son 10 por semestre");
+            int cantAsignaturas = Integer.parseInt(entradaAsignaturas);
             o.setCantidad_asignaturas(cantAsignaturas);
 
             Est_dis.add(o);
@@ -97,7 +92,7 @@ public class metodosregistro {
         while (bandera) {
             objEst_ing o = new objEst_ing();
 
-            String cedula = v.validarSoloNumeros("ingrese Su numero de cedula: ");
+            String cedula = v.validarCedula("ingrese Su numero de cedula: ");
             o.setCedula(cedula);
 
             if (!Est_ing.isEmpty()) {
@@ -111,15 +106,17 @@ public class metodosregistro {
                 }
             }
 
+            o.setSerial(null);
+
             o.setNombre(v.validarSoloLetras("Ingrese su Nombre: "));
 
             o.setApellido(v.validarSoloLetras("Ingrese su Apellido: "));
 
-            o.setTelefono(v.validarSoloNumeros("ingrese su numero de Telefono: "));
+            o.setTelefono(v.validarNumeroTel("ingrese su numero de Telefono: "));
 
             String semestreAct = v.validarConRegex("¿Que semestre se encuentra cursando actualmente?: ",
-                    "^(1[0-5]|[1-9])$",
-                    "Error! ingrese un semestre que sea valido\n");
+                    "^(1[0-5]|[1-5])$",
+                    "Ingrese un semestre que sea valido (1-15)\n");
 
             int semestre = Integer.parseInt(semestreAct);
 
@@ -127,7 +124,7 @@ public class metodosregistro {
 
             String promedioacum = v.validarConRegex("¿Actualmente cual es su promedio acumulado?: ",
                     "^(0(\\.\\d+)?|[1-4](\\.\\d+)?|5(\\.0+)?)$",
-                    "Error: ingrese un dato valido");
+                    "Ingrese un dato valido (0.0 - 5.0)");
             o.setProm_acum(Float.parseFloat(promedioacum));
 
             Est_ing.add(o);
@@ -143,18 +140,18 @@ public class metodosregistro {
 
     }
 
-    public LinkedList<ObjComp_portatil> Registrar_portatil(LinkedList<ObjComp_portatil> Computador) {
+    public LinkedList<ObjComp_portatil> RegistrarComputador(LinkedList<ObjComp_portatil> Computador) {
         Boolean bandera = true;
 
         while (bandera) {
             ObjComp_portatil o = new ObjComp_portatil();
-            o.setSerial(v.validarNoCaracteresEspeciales("ingrese el serial del computador: "));
+            o.setSerial(v.validarNoCaracteresEspeciales("Ingrese el serial del computador: "));
 
             if (!Computador.isEmpty()) {
                 for (ObjComp_portatil rep : Computador) {
                     if (rep.getSerial().equalsIgnoreCase(o.getSerial())) {
                         System.out.print(
-                                "\nEste Computador ya se encuentra registrado. \nSi desea realizar alguna modificacion puede hacerlo desde el menu editar\n");
+                                "\n--------Este Computador ya se encuentra registrado.------ \nSi desea realizar alguna modificacion puede hacerlo desde la opcion editar\n");
                         return Computador;
 
                     }
@@ -164,28 +161,30 @@ public class metodosregistro {
 
             o.setMarca(v.validarSoloLetras("ingrese la marca del computador: "));
 
-            o.setTamaño(v.validarFloat("Ingrese el Tamaño de su computador en pulgadas: ", "Ingrese un numero valido"));
+            o.setTamaño(Float.parseFloat(v.validarConRegex("Ingrese el Tamaño de su computador en pulgadas: ",
+                    "^(?:1[0-7](?:\\.\\d{1,2})?|[7-9](?:\\.\\d{1,2})?)$", "Ingrese un numero valido (Desde 7 Hasta 17 pulgadas)")));
 
-            o.setPrecio(v.validarFloat("ingrese el precio de su computador: ",
-                    "ERROR! VERIFIQUE EL TIPO DE DATO E INTENTE NUEVAMENTE"));
+            o.setPrecio(Float.parseFloat(v.validarConRegex("Ingrese el precio de su computador en COP: $",
+                    "^(1[5-9][0-9]{4}|[2-9][0-9]{5}|1[0-9]{6}|2[0-4][0-9]{6}|25000000)$",
+                    "Ingrese una opcion valida, (LIMITES: $1 - $25'000,000)")));
             String entSistemOp = v.validarConRegex(
                     "¿Que sistema operativo tiene el computador " + o.getMarca() + ", con el serial: " + o.getSerial()
-                            + "? \n1. Windows 7. \n2. Windows 10. \n3. Windows 11.\n",
-                    "^[1-3]+$", "Porfavor ingrese una opcion valida");
+                            + "? \n1. Windows 7. \n2. Windows 10. \n3. Windows 11.\nDigite: ",
+                    "^[1-3]+$", "Por favor ingrese una opcion valida");
             int sistemOp = Integer.parseInt(entSistemOp);
             if (sistemOp == 1) {
-                o.setSistem_op("1. Windows 7.");
+                o.setSistem_op("Windows 7.");
 
             } else if (sistemOp == 2) {
-                o.setSistem_op("1. Windows 10.");
+                o.setSistem_op("Windows 10.");
 
             } else
-                o.setSistem_op("1. Windows 11.");
+                o.setSistem_op("Windows 11.");
 
             String entrada = v.validarConRegex(
                     "¿Que procesador contiene el computador " + o.getMarca() + ", " + o.getSerial()
                             + "? \n1. AMD Ryzen. \n2. Intel® Core™ i5.\nDigite: ",
-                    "^[1-2]+$", "\nError! Porfavor ingrese una opcion valida\n");
+                    "^[1-2]+$", "\nPor favor ingrese una opcion valida\n");
             int procesador = Integer.parseInt(entrada);
             if (procesador == 1) {
                 o.setProcesador("AMD Ryzen.");
@@ -196,9 +195,9 @@ public class metodosregistro {
             Computador.add(o);
             exp.exportarArchivoComp(Computador);
 
-            System.out.println(
-                    "Computador: " + o.getMarca() + " Con el serial: " + o.getSerial() + "Agregado Correctamente");
-            System.out.println("¿Desea ingresar otro Estudiante ? \n1. Sí \n2. Volver al menú.");
+            System.out.println("Computador: " + o.getMarca() + " Con el serial: " + o.getSerial() + "\n"
+                    + "Agregado Correctamente");
+            System.out.println();
 
             bandera = nuevoregistro("computador");
 
@@ -229,15 +228,17 @@ public class metodosregistro {
 
             o.setMarca(v.validarSoloLetras("ingrese la marca de la tablet: "));
 
-            o.setTamaño(v.validarFloat("Ingrese el Tamaño de su tablet en pulgadas: ", "Ingrese un numero valido"));
+           o.setTamaño(Float.parseFloat(v.validarConRegex("Ingrese el Tamaño de su computador en pulgadas: ",
+                    "^(?:1[0-7](?:\\.\\d{1,2})?|[7-9](?:\\.\\d{1,2})?)$", "Ingrese un numero valido (Desde 7 Hasta 17 pulgadas)")));
 
-            o.setPrecio(v.validarFloat("ingrese el precio de su tablet: ",
+            o.setPrecio(Float.parseFloat(v.validarConRegex("ingrese el precio de su tablet en COP: $",
+                    "^(1[5-9][0-9]{4}|[2-9][0-9]{5}|1[0-9]{6}|2[0-4][0-9]{6}|25000000)$",
+                    "Ingrese una opcion valida, (limites $1 - $25'000,000)")));
 
-                    "ERROR! VERIFIQUE EL TIPO DE DATO E INTENTE NUEVAMENTE"));
             String almacenamientoTablet = v.validarConRegex(
-                    "¿Que sistema operativo tiene el computador " + o.getMarca() + ", " + o.getSerial()
-                            + "? \n1. 256 GB. \n2. 512 GB. \n3. 1 TB.\n",
-                    "^[1-3]+$", "Porfavor ingrese una opcion valida");
+                    "Cantidad de almacenamiento: " + o.getMarca() + ", " + o.getSerial()
+                            + "\n1. 256 GB. \n2. 512 GB. \n3. 1 TB.\nDigite: ",
+                    "^[1-3]+$", "Por favor ingrese una opcion valida (1-3)");
             int almacenamiento = Integer.parseInt(almacenamientoTablet);
             if (almacenamiento == 1) {
                 o.setAlmacenamiento("256 GB");
@@ -248,8 +249,9 @@ public class metodosregistro {
             } else
                 o.setAlmacenamiento("1 TB");
 
-            o.setPeso(v.validarFloat("¿Cuanto pesa la tablet? \n (ingrese su peso en kg): ",
-                    "ERROR! Ingrese un dato valido\n"));
+            o.setPeso(Float.parseFloat(v.validarConRegex("¿Cuanto pesa la tablet? \n(ingrese su peso en kg): ",
+                    "^(?:[0-3](\\.[0-9]{1,2})?|4(\\.00)?)$",
+                    "Ingrese un dato valido (Desde cero hasta 4kg)\n")));
 
             tablet.add(o);
             exp.exportarArchivoTablets(tablet);

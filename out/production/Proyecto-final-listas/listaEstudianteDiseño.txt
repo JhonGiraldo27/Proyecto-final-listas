@@ -1,0 +1,16 @@
+Nombre: Jhon Eyder
+Apellido: Giraldo Hoyos
+Cedula: 1000645685
+Telefono: 3128585324
+Modalidad: Presencial
+Cantidad de asignaturas: 10
+Serial : UEW56F
+---------------------------------------
+Nombre: Juan Pablo
+Apellido: Marenco Padilla
+Cedula: 1038646891
+Telefono: 3042241088
+Modalidad: Presencial
+Cantidad de asignaturas: 3
+Serial : null
+---------------------------------------

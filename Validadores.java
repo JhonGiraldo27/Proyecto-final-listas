@@ -22,6 +22,7 @@ public class Validadores {
                 System.out.println(mensajeError);
 
             }
+
         } while (!valido);
 
         return entrada;
@@ -37,15 +38,23 @@ public class Validadores {
         return Float.parseFloat(entrada);
     }
 
-    public String validarSoloNumeros(String mensaje) {
-        return validarConRegex(mensaje, "^[0-9]+$", "Error! Ingrese solo valores numericos");
-    }
-
     public String validarSoloLetras(String mensaje) {
         return validarConRegex(mensaje, "^[a-zA-Z\\s]+$", "Ingrese solo caracteres alfabeticos");
     }
 
     public String validarNoCaracteresEspeciales(String mensaje) {
-        return validarConRegex(mensaje, "^[a-zA-Z0-9]+$", "No ingrese caracteres especiales\nntente nuevamente: ");
+        return validarConRegex(mensaje, "^[a-zA-Z0-9]+$",
+                "No ingrese caracteres especiales, intente nuevamente.");
     }
+
+    public String validarCedula(String mensaje) {
+        return validarConRegex(mensaje, "^\\d{7,10}$", "Debe ingresar solo numeros entre 7 y 10 caracteres");
+    }
+
+    public String validarNumeroTel(String mensaje) {
+        return validarConRegex(mensaje, "^\\d{7, 10}$",
+                "--------------------\nIngrese solo numeros, Minimo 7 - Maximo 10 caracteres \n" +
+                        "");
+    }
+
 }

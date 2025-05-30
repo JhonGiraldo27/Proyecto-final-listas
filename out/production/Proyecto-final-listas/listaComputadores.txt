@@ -1,0 +1,32 @@
+Marca: DEll
+Precio: 250.0
+Procesador: AMD Ryzen.
+Serial: ADM2312
+Sistema Operativo: 1. Windows 10.
+Tamaño: 16.0
+Disponible : true
+---------------------------------------
+Marca: hp
+Precio: 5022.0
+Procesador: Intel® Core™ i5.
+Serial: uav225
+Sistema Operativo: 1. Windows 11.
+Tamaño: 15.0
+Disponible : true
+---------------------------------------
+Marca: victus
+Precio: 62.0
+Procesador: Intel® Core™ i5.
+Serial: usb112
+Sistema Operativo: 1. Windows 11.
+Tamaño: 20.0
+Disponible : true
+---------------------------------------
+Marca: lenovo
+Precio: 78.0
+Procesador: AMD Ryzen.
+Serial: 144522
+Sistema Operativo: 1. Windows 10.
+Tamaño: 55.0
+Disponible : true
+---------------------------------------
